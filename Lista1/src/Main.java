@@ -1,3 +1,5 @@
+import exe0.Carro;
+
 import javax.swing.*;
 
 public class Main {
