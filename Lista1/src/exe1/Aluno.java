@@ -17,10 +17,16 @@ public class Aluno {
 
     public void dadosAluno(){
         System.out.println("Nro do aluno: " + this.nroAluno + " Nome: " + this.nome
-        + " Idade: " + this.idade + " P1: " + this.p1 + " P2: " + this.p2);
+        + " Idade: " + this.idade + " P1: " + this.p1 + " P2: " + this.p2 +
+                "Situação: " + this.passou());
     }
 
     public float notaFinal(){
         return (this.p1 + this.p2) / 2;
+    }
+
+    public String passou(){
+        // operador ternário
+        return (this.notaFinal() >= 6) ? "Passou" : "Não Passou";
     }
 }
