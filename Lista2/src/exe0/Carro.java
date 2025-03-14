@@ -10,6 +10,8 @@ public class Carro {
     public Carro(){
         this.marca = "sem marca";
         this.modelo = "sem modelo";
+
+       
     }
     public Carro(String marca, String modelo, int ano, float velocidade){
         this.setMarca(marca);
