@@ -23,6 +23,8 @@ public class Cliente {
         else System.out.println("problema no tamanho");
     }
     public void setNroAgencia(String nroAgencia) {
+        // quando um método é chamado por um objeto
+        // esse método é chamado de método de instância
         if (nroAgencia.length() == 6){
             if (nroAgencia.charAt(4) == '-'){
                 this.nroAgencia = nroAgencia;
