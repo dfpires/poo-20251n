@@ -23,4 +23,32 @@ public class LivroController {
         this.livros.add(livro); // adiciona livro no vetor
         return livro;
     }
+    @DeleteMapping("/{id}")
+    public String deleteLivro(@PathVariable Long id){
+        // vetor tem um método chamado removeIf
+        // que remove caso o livro seja encontrado
+        // removeIf percorre o vetor - livro representa cada livro no vetor
+        boolean resp = this.livros.removeIf(livro -> livro.getId() == id);
+        if(resp){
+            return "Livro removido com sucesso!";
+        }
+        else {
+            return "Livro nao encontrado";
+        }
+    }
+    @PutMapping("/{id}")
+    public Livro updateLivro(@PathVariable Long id, @RequestBody Livro novo){
+        // percorre o vetor
+        for(Livro livro : this.livros){
+            // se o id do livro no vetor = id do frontend
+            if(livro.getId() == id){
+                livro.setTitulo(novo.getTitulo());
+                livro.setAutor(novo.getAutor());
+                livro.setEditora(novo.getEditora());
+                return livro; // retorna livro atualizado
+            }
+        }
+        return null;
+    }
+
 }
