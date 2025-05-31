@@ -1,9 +1,6 @@
 package br.edu.fatecfranca.apirestfulbd3.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity // a classe vai ser mapeada em uma tabela
 public class Livro {
@@ -14,16 +11,10 @@ public class Livro {
     private String titulo;
     private String autor;
     private String editora;
-
-    public Livro() {
-    }
-
-    public Livro(Long id, String titulo, String autor, String editora) {
-        this.id = id;
-        this.titulo = titulo;
-        this.autor = autor;
-        this.editora = editora;
-    }
+    // relaciona com Genero
+    @ManyToOne
+    @JoinColumn(name = "genero_id")
+    private Genero genero;
 
     public Long getId() {
         return id;
@@ -55,5 +46,11 @@ public class Livro {
 
     public void setEditora(String editora) {
         this.editora = editora;
+    }
+    public Genero getGenero() {
+        return genero;
+    }
+    public void setGenero(Genero genero) {
+        this.genero = genero;
     }
 }
