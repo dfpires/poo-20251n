@@ -1,9 +1,8 @@
 package br.edu.fatecfranca.apirestfulbd3.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import jakarta.persistence.*;
+import java.util.List;
 
 @Entity
 public class Genero {
@@ -11,6 +10,10 @@ public class Genero {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nome;
+    // Um gênero tem muitos livros
+    @OneToMany(mappedBy="genero")
+    @JsonIgnore // faz com que não exista uma recursividade no JSON com o livro
+    private List<Livro> livros; // guarda os livros do gênero
 
     public Long getId() {
         return id;
